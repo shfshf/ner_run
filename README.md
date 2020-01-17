@@ -26,7 +26,22 @@ python -m ner_s2s.ner_estimator.estimator_run
 python -m ner_s2s.ner_keras.keras_run
 ```
 
-### gpu，指定显卡运行(针对多显卡)
+### gpu
+
+这里需要说明的是，通过`pip install -U ner-s2s`安装所需的依赖在服务器上的conda环境中，
+是无法直接使用gpu训练模型的，需要在conda环境中安装 nvidia 相关的 cudnn 驱动；
+
+怎样查看 conda 环境是否可以使用gpu加速？三步：
+* `python` 进入命令行模式
+* `import tensorfow as tf` 导入tensorflow
+* `tf.test.is_gpu_available()` 如果显示 True 则大功告成
+
+所以需要在 conda 环境中多安装一次 gpu 驱动：
+```
+conda install tensorflow-gpu==1.15
+```
+
+然后指定显卡运行(针对多显卡)即可：
 ```
 # 选择 estimator 模型进行训练
 CUDA_VISIBLE_DEVICES=0 python -m ner_s2s.ner_estimator.estimator_run
