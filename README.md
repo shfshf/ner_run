@@ -36,6 +36,19 @@ python -m ner_s2s.ner_keras.keras_run
 * `import tensorfow as tf` 导入tensorflow
 * `tf.test.is_gpu_available()` 如果显示 True 则大功告成
 
+例如：
+```
+(ner_s2s) shf@tesla:~$ python
+Python 3.6.10 |Anaconda, Inc.| (default, Jan  7 2020, 21:14:29)
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> tf.test.is_gpu_available()
+...
+True
+>>>
+```
+
 所以需要在 conda 环境中多安装一次 gpu 驱动：
 ```
 conda install tensorflow-gpu==1.15
